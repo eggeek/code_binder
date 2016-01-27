@@ -1,5 +1,5 @@
-# code binder
+# Code binder
 
-## Data structure
-### Segment tree
-### Heavy light decomposition
+## [Data structure]()
+### [SegmentTree]()
+### [HeavyLightDecomposition]()
