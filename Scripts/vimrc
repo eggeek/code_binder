@@ -1,0 +1,17 @@
+nnoremap j gj
+nnoremap k gk
+nnoremap B ^
+nnoremap E $
+nnoremap ^ <nop>
+nnoremap $ <nop>
+map "" maviwS"`a
+map '' maviws'`a
+map )) maviws'`a
+map ]] maviws'`a
+set nowrap
+set autoindent
+set expandtab
+set tabstop=4
+set softtabstop=4
+set nojoinspaces
+set number
