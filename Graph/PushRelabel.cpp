@@ -26,8 +26,12 @@ class MaxFlow {
     void initialize(int n, int m, int s, int t) {
         this->n = n; this->m = m;
         this->s = s; this->t = t;
-        memset(ex, 0, sizeof(ex));
-        memset(h, 0, sizeof(h));
+        for (int i=0; i<n; i++) ex[i] = 0;
+        for (int i=0; i<n; i++) h[i] = 0;
+        for (int i=0; i<n; i++) g[i].clear();
+        for (int i=0; i<=2*n; i++) cnth[i] = 0;
+        for (int i=0; i<n; i++) inq[i] = 0;
+        while (!q.empty()) q.pop();
     }
 
     void add_edge(int from, int to, int cap) {
@@ -45,7 +49,7 @@ class MaxFlow {
     }
 
     void gap_heuristic(int gap) {
-        for (int u=1; u<=n; u++) {
+        for (int u=0; u<n; u++) {
             if (u == s || u == t || h[u] < gap) continue;
             cnth[h[u]]--;
             h[u] = 2 * n;
@@ -109,12 +113,12 @@ int main() {
     int n, m, s, t;
     scanf("%d%d%d%d", &n, &m, &s, &t);
 
-    mf.initialize(n, m, s, t);
+    mf.initialize(n, m, s-1, t-1);
     for (int i=0; i<m; i++) {
         int u, v, c;
         scanf("%d%d%d", &u, &v, &c);
-        mf.add_edge(u, v, c);
-        mf.add_edge(v, u, 0);
+        mf.add_edge(u-1, v-1, c);
+        mf.add_edge(v-1, u-1, 0);
     }
     cout << mf.run() << endl;
     return 0;
