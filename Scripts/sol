@@ -2,6 +2,3 @@
 mkdir $1
 ln -st $1 ../run
 cp ~/Templates/acm.cc $1/$1.cc
-touch $1/test.in
-touch $1/test.out
-
