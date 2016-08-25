@@ -11,7 +11,7 @@ int c[N];
 
 void radixSort(int k) {
   int i, sum, maxi = max(300, n); // up to 255 ascii chars
-  memset(c, 0, sizeof(c));
+  for (int i=0; i < maxi; i++) c[i] = 0;
   for (int i=0; i<n; i++)
     c[i + k < n ? RA[i+k]: 0]++;
   for (i=sum=0; i < maxi; i++) { int t = c[i]; c[i] = sum; sum += t; }
