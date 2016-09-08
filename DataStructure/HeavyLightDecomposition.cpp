@@ -8,6 +8,7 @@ using namespace std;
 struct Edge { int u, v, c; } es[maxn];
 
 class SegmentTree {
+// need test on https://www.codechef.com/problems/QTREE
     private:
         int t[maxn<<1], size, height;
     public:
@@ -33,11 +34,12 @@ class SegmentTree {
             }
             return ans;
         }
-} t;
+};
 
 class HLD {
     #define INF 1000000
     public:
+        SegmentTree t;
         // heavy light decomposition
         int dep[maxn], heavy[maxn], fa[maxn], sz[maxn],
             top[maxn], pos[maxn], pCnt, n;
@@ -113,7 +115,6 @@ int main() {
             scanf("%d%d%d", &a, &b, &c);
             es[i].u = a, es[i].v = b, es[i].c = c;
         }
-        t.init(n);
         hld.init(n, es);
         char op[10];
         int x, y;
