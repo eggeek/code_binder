@@ -11,12 +11,24 @@ const double INF = 4e18;
 struct Point {
     double x, y;
 };
-Point s[maxn];
-Point tmp[maxn];
 
-bool cmpY(Point a, Point b) { return a.y < b.y; }
+class closestPair {
+public:
+  vector<Point> s;
+  vector<Point> tmp;
+  int size;
 
-void merge(int l, int m, int r) {
+  void init(vector<Point>& points) {
+    size = (int)points.size();
+    s = vector<Point>(points);
+    tmp.resize(size);
+    auto cmpx = [](Point a, Point b) { return a.x < b.x; };
+    sort(s.begin(), s.end(), cmpx);
+  }
+
+  bool cmpY(Point a, Point b) { return a.y < b.y; }
+
+  void merge(int l, int m, int r) {
     int tm = m, tl = l, idx = 0;
     while (l < tm  && m < r) {
         if (s[l].y <= s[m].y) tmp[idx++] = s[l++];
@@ -25,14 +37,14 @@ void merge(int l, int m, int r) {
     while (l < tm) tmp[idx++] = s[l++];
     while (m < r) tmp[idx++] = s[m++];
     for (int i=0; i<idx; i++) s[i+tl] = tmp[i];
-}
+  }
 
-double ClosestPair(int l, int r) {
+  double calc(int l, int r) {
     double d = INF;
     if (r == l) return d;
     int mid = (l + r) >> 1;
     double X = s[mid].x; // store X before recursive process, cuz they will rearrange Points.
-    d = min(ClosestPair(l, mid), ClosestPair(mid+1, r));
+    d = min(calc(l, mid), calc(mid+1, r));
     merge(l, mid+1, r+1);
 
     int idx = 0;
@@ -47,18 +59,21 @@ double ClosestPair(int l, int r) {
         tmp[idx++] = s[i];
     }
     return d;
-}
+  }
+
+  double run() { return calc(0, size-1); }
+} sol;
 
 int main() {
     int n;
     scanf("%d", &n);
+    vector<Point> ps(n);
     for (int i=0; i<n; i++) {
         double x, y;
         scanf("%lf%lf", &x, &y);
-        s[i] = Point{x, y};
+        ps[i] = Point{x, y};
     }
-    auto cmpx = [](Point a, Point b) { return a.x < b.x; };
-    sort(s, s + n, cmpx);
-    printf("%lf\n",ClosestPair(0, n-1));
+    sol.init(ps);
+    printf("%lf\n",sol.run());
     return 0;
 }
