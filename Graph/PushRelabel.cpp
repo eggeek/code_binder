@@ -25,7 +25,7 @@ class MaxFlow {
 
     void initialize(int n, int m, int s, int t) {
         this->n = n; this->m = m;
-        this->s = s; this->t = t;
+        this->s = s; this->t = t; tote = 0;
         for (int i=0; i<n; i++) ex[i] = 0;
         for (int i=0; i<n; i++) h[i] = 0;
         for (int i=0; i<n; i++) g[i].clear();
