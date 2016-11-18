@@ -10,3 +10,7 @@
 ## [Graph](https://github.com/eggeek/code_binder/tree/master/Graph)
 ### [PushRelabel](https://github.com/eggeek/code_binder/blob/master/Graph/PushRelabel.cpp)
 ### [ToplogicalSort](https://github.com/eggeek/code_binder/blob/master/Graph/ToplogicalSort.cpp)
+
+## [Math](https://github.com/eggeek/code_binder/tree/master/Math)
+### [math](https://github.com/eggeek/code_binder/tree/master/Math/math.cpp)
+### [matrix](https://github.com/eggeek/code_binder/tree/master/Math/matrix.cpp)
