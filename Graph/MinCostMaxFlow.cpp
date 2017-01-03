@@ -57,15 +57,11 @@ class MinCostMaxFlow {
     }
     return res;
   }
-
-  pii max_flow(int s, int t) { // return {maxflow, mincost}
-    int flow = 0, cost = 0;
-    /*
-     * while ((f = dfs(s, t, INF)) > 0) {
-     *  flow += f;
-     *  cost += min_cost_flow(s, t, f);
-     * }
-     */
-    return {flow, cost};
-  }
 };
+
+void solve() {
+  /*
+   * int flow = max_flow(s, t);
+   * int cost = min_cost_flow(s, t, flow);
+   */
+}
