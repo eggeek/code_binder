@@ -21,7 +21,7 @@ void tarjan(int u,vector< vector<int> > g,int index[],int low_index[]){
       low_index[u] = min(low_index[u],index[v]);
   }
   if(index[u] == low_index[u]) {
-    while(S.empty() == false && index[u] == low_index[S.top()] ) {
+    while(S.empty() == false && index[u] <= low_index[S.top()] ) {
       cout<<S.top()<<" ";
       in_stack[S.top()] = 0;
       S.pop();
